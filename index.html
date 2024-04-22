@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <style>
+        #form {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 3px double dodgerblue;
+            background-image: linear-gradient(130deg, dodgerblue, rgb(163, 163, 244));
+            text-align: center;
+        }
+        input, select {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 80%;
+            border: 1px solid white;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+
+        }
+
+        label {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+     
+        #submit {
+            
+            margin: 20px auto;
+            background-color: rgb(112, 205, 248);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+  
+    <form id="form" onclick="return validateForm() "  action="index.php" method="post">
+        <fieldset>
+            <legend>Personal Details</legend>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>Contact Details</legend>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Login Details</legend>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" minlength="8" required>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" name="confirm_password" id="confirm_password" minlength="8" required>
+        </fieldset>
+
+        <input type="submit" value="Submit" id="submit" >
+    </form>
+    
+    
+    <script >
+        function validateForm() {
+          var name = document.getElementById("name");
+          var gender = document.getElementById("gender");
+          var phone = document.getElementById("phone");
+          var email = document.getElementById("email");
+          var cpassword = document.getElementById("confirm_password");
+          var password = document.getElementById("password");
+          var form = document.getElementById("form");
+        
+          if (cpassword.value.trim() === password.value.trim()) {
+            return true;
+          } else {
+            alert("password and confirm password are not same");
+            return false;
+          }
+        }
+            </script>
+</body>
+</html>
